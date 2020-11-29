@@ -1,6 +1,13 @@
-import React, { FC, useState, ChangeEvent, ReactElement } from "react";
+import React, {
+  FC,
+  useState,
+  ChangeEvent,
+  ReactElement,
+  useEffect,
+} from "react";
 import Input, { InputProps } from "../Input/input";
 import Icon from "../Icon/icon";
+import useDebounce from "../../hooks/useDebounce";
 
 interface DataSourceObject {
   value: string;
@@ -28,17 +35,17 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
   } = props;
 
   // 用户输入的值
-  const [inputValue, setInputValue] = useState(value);
+  const [inputValue, setInputValue] = useState(value as string);
   // 下拉提建议
   const [suggestions, setSugetions] = useState<DataSourceType[]>([]);
   // 异步是否加载
   const [loading, setLoading] = useState(false);
+  // 防抖
+  const debouncedValue = useDebounce(inputValue);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value.trim();
-    setInputValue(value);
-    if (value) {
-      const results = fetchSuggestions(value);
+  useEffect(() => {
+    if (debouncedValue) {
+      const results = fetchSuggestions(debouncedValue);
       if (results instanceof Promise) {
         setLoading(true);
         results.then((data) => {
@@ -51,6 +58,11 @@ export const AutoComplete: FC<AutoCompleteProps> = (props) => {
     } else {
       setSugetions([]);
     }
+  }, [debouncedValue]);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.trim();
+    setInputValue(value);
   };
 
   // 点击下拉菜单的选项触发的函数
