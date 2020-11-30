@@ -47,4 +47,13 @@ addDecorator(storyWrapper);
 addDecorator(withInfo);
 addParameters({ info: { inline: true, header: false } });
 
-configure(require.context("../src", true, /\.stories\.tsx$/), module);
+const loaderFn = () => {
+  const allExports = [require("../src/welcome.stories.tsx")];
+  const req = require.context("../src/components", true, /\.stories\.tsx$/);
+  req.keys().forEach((fname) => allExports.push(req(fname)));
+  return allExports;
+};
+
+// configure(require.context("../src", true, /\.stories\.tsx$/), module);
+
+configure(loaderFn, module);
