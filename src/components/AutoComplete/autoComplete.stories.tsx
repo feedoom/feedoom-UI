@@ -65,7 +65,7 @@ const SimpleComplete = () => {
     return (
       <>
         {item.value}
-        {/* <p>url: {item.url}</p> */}
+        <p>url: {item.number}</p>
       </>
     );
   };

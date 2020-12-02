@@ -2,6 +2,11 @@
 
 ## 使用 React+typescript 打造的组件库
 
+### 组件预览
+
+[组件预览地址](https://feedoom.gitee.io/feedoom-ui)
+![](./public/component.png)
+
 ### 安装最后已经发布的组件库来试试
 
 ```javascript

@@ -25,10 +25,7 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.13",
-    "@storybook/preset-scss": "^1.0.3",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "react-transition-group": "^4.4.1",
     "web-vitals": "^0.2.4"
@@ -70,6 +67,10 @@
     ]
   },
   "devDependencies": {
+    "@storybook/preset-scss": "^1.0.3",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/addon-essentials": "^6.1.7",
     "@storybook/addon-info": "^5.2.8",
