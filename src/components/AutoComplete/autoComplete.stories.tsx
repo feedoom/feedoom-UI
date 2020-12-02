@@ -5,7 +5,6 @@ import { AutoComplete } from "./autoComplete";
 
 interface LakerPlayerProps {
   value: string;
-  number: number;
 }
 // interface GithubUserProps {
 //   login: string;
@@ -62,12 +61,7 @@ const SimpleComplete = () => {
 
   // DataSourceType<GithubUserProps>
   const renderOption = (item: LakerPlayerProps) => {
-    return (
-      <>
-        {item.value}
-        <p>url: {item.number}</p>
-      </>
-    );
+    return <>{item.value}</>;
   };
 
   return (
